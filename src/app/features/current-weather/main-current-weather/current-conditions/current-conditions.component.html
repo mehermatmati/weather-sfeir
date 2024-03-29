@@ -1,0 +1,4 @@
+
+<ng-container *ngFor="let location  of locations; trackBy:identifyWeatherByZip" >
+  <app-current-condition-element [location]="location" (removeLocationEmitter)="removeLocation($event)"></app-current-condition-element>
+</ng-container>

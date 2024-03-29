@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+
+.cold {
+    color: blue !important;
+}
+
+.hot {
+    color: red !important;
+}
+
+.regular {
+    color: orange !important;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
