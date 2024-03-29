@@ -14,7 +14,7 @@ import { ZipcodeEntryComponent } from './zipcode-entry/zipcode-entry.component';
   styleUrls: ['./main-current-weather.component.css']
 })
 export class MainCurrentWeatherComponent implements OnInit, OnDestroy, AfterViewInit{
-  //@ViewChild(ZipcodeEntryComponent) private _zipcondeEntryComponent : ZipcodeEntryComponent;
+  @ViewChild(ZipcodeEntryComponent) private _zipcondeEntryComponent : ZipcodeEntryComponent;
   locations : Location[] = [];
   message: string | null = null;
   countries : string[] = [];
@@ -96,15 +96,15 @@ export class MainCurrentWeatherComponent implements OnInit, OnDestroy, AfterView
 
 
   initCountries() {
-    //this._zipcondeEntryComponent.form.controls['country'].valueChanges.pipe(
-      //switchMap(
-        //needle =>
-        //!!needle && needle.length>0 ? this.getCountryObservable(needle) : of([])
-       //),
-      //distinctUntilChanged(),
-      //takeUntil(this._subject$),
-      //catchError((error, caught) => caught)
-    //).subscribe(data => this.countries = data);
+    this._zipcondeEntryComponent.form.controls['country'].valueChanges.pipe(
+      switchMap(
+        needle =>
+        !!needle && needle.length>0 ? this.getCountryObservable(needle) : of([])
+       ),
+      distinctUntilChanged(),
+      takeUntil(this._subject$),
+      catchError((error, caught) => caught)
+    ).subscribe(data => this.countries = data);
   }
 
   getCountryObservable(needle : string) : Observable<string[]>{
