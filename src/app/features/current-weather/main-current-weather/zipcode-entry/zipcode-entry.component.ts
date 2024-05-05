@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output, Signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { filter, Observable, Subject, takeUntil } from 'rxjs';
 import { Status } from '../../../../shared/models/enums/status.enum';
@@ -13,7 +13,7 @@ export class ZipcodeEntryComponent implements OnInit, OnDestroy {
   @Output()
   addLocationEmitter: EventEmitter<number> = new EventEmitter<number>();
   @Input() getStatus$: Observable<Status> = new Observable();
-  @Input() message: string | null = null;
+  @Input() message: Signal<string | null>;
   private _subject$ = new Subject<void>;
 
   @Input() countries : string[] = [];
